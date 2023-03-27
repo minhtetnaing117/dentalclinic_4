@@ -90,11 +90,12 @@ DATABASES = {
     # }
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql',
-        'NAME'     : 'railway', # name of the database
-        'USER'     : 'postgres', # username of the database 
-        'PASSWORD' : 'YewITxHTm3R1ISa3HVMN', #password of your postgresql app
-        'HOST'     : 'containers-us-west-46.railway.app', # name of the host
-        'PORT'     : '7561',
+        'URL'      :  os.getenv('DATABASE_URL'),
+        'NAME'     : os.getenv('PGDATABASE'), # name of the database
+        'USER'     : os.getenv('PGUSER'), # username of the database 
+        'PASSWORD' : os.getenv('PGPASSWORD'), #password of your postgresql app
+        'HOST'     : os.getenv('PGHOST'), # name of the host
+        'PORT'     : os.getenv('PGPORT'),
     }
 }
 
