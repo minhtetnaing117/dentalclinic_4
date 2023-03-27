@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title%} New Visit {% endblock %}
+
+{% block content %}
+<div class="container">
+<h1> New Visit </h1>
+<div class="container">
+<form method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-2"><label for="patient">Patient Name</label></div>
+			<div class="col-sm-10">{{ form.patient }}</div>
+		</div>
+	</div></br>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-2"><label for="doctor">Doctor Name</label></div>
+			<div class="col-sm-10">{{ form.doctor_id }}</div>
+		</div>
+	</div></br>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-2"><label for="visit_date">Visit date</label></div>
+			<div class="col-sm-10">{{ form.visit_date }}</div>
+		</div>
+	</div></br>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-2"><label for="description">Description</label></div>
+			<div class="col-sm-10">{{ form.description }}</div>
+		</div>
+	</div>
+	
+	<input type="submit" class="btn btn-primary" value="Add Patient" name="">
+			
+</form>
+</div>
+</div>
+{% endblock %}

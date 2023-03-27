@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title%} Find Doctor {% endblock %}
+
+{% block content %}
+<div class="container">
+
+<h1> Find Patients' Families </h1>
+<div class="container">
+
+<form action="/dentalclinic/owners/" method="GET">
+	
+			<div class="form-group">
+				<label for="last_name">Last name:</label><br />
+				<input type="text" class="form-control"  name="last_name" id="last_name"/>
+			</div></br>
+
+			<input type="submit" class="btn btn-primary" value="Find Patients' Families" name=""></p>
+
+	<a href="/dentalclinic/owners/add/">New Add Patients' Families</a>
+</form>
+</div>
+</div>
+ {% endblock %}

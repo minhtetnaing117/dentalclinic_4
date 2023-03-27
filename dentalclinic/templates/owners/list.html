@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title%} All Owner {% endblock %}
+
+{% block content %}
+<div class="container">
+	<h3> Appointment' Families </h3>
+	<div class="container">
+	{% if all_owners %}
+	<table class="table table-light table-hover">
+		<thead class="thead-dark">
+		<tr>
+			<th>Name</th>
+			<th>Address</th>
+			<th>City</th>
+			<th>Telephone</th>
+		</tr>
+		</thead>
+		{% for owner in all_owners %}
+		<tr>
+			<td>
+				<a href="{{ owner.id }}">
+				{{ owner.first_name }} {{ owner.last_name }}
+			    </a>
+
+		    </td>
+			<td>{{ owner.address }}</td>
+			<td>{{ owner.city }}</td>
+			<td>{{ owner.telephone }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+</div>
+	{% else %}
+		<p>There are currently no owners to display</p>
+	{% endif %}
+
+{% endblock %}

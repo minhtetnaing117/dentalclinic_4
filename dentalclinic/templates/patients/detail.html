@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title%} {{ owner.first_name}} {{ owner.last_name}} {% endblock %}
+
+{% block content %}
+<div class="container">
+	<h2> Patients' Families Information</h2>
+	<div class="container">
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>{{ owner.first_name }}&nbsp;{{ owner.last_name }}</td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td>{{ owner.address }}</td>
+		</tr>
+				<tr>
+			<td>City</td>
+			<td>{{ owner.city }}</td>
+		</tr>
+				<tr>
+			<td>Telephone</td>
+			<td>{{ owner.telephone }}</td>
+		</tr>
+	</table>
+
+<a href="/dentalclinic/owners/edit/{{ owner.id }}/">Edit Patients' Families</a>
+
+<a href="/dentalclinic/patients/add/{{ owner.id }}/">Add New Patient</a>
+
+<h2>Patients and Visits</h2>
+	{% for patient in owner.patient_set.all %}
+		<table class="table">
+			<tr valign="top">
+				<td>
+					<table>
+						<tr>
+							<th>Patient Name</th>
+							<td>{{ patient.name }}</td>
+						</tr>
+						<tr>
+							<th>Birthday</th>
+							<td>{{ patient.birthday }}</td>
+						</tr>
+						<tr>
+							<th>Type</th>
+							<td>{{ patient.patienttype.name }}</td>
+						</tr>
+					</table>
+				</td>
+<td valign="top">
+	<table>
+		<tr>
+			<thead class="thead-dark">
+				<th>Visit Date</th>
+				<th>Description</th>
+			</thead>
+			{% for visit in patient.visit_set.all %}
+				<tr>
+					<td>{{ visit.visit_date }}</td>
+					<td>{{ visit.description }}</td>
+				</tr>
+			{% endfor %}
+		</tr>
+	</table>
+</td>
+			</tr>
+		</table>
+
+		<a href="/dentalclinic/visit/add/{{ patient.id }}/">Add Doctors Visit</a>
+		<a href="/dentalclinic/patients/edit/{{ patient.id }}/">Edit Patient Information</a>
+
+	{% empty %}
+		<p>There are no patient for this owner.</p>
+	{% endfor %}
+</div>
+</div>
+
+{% endblock %}
