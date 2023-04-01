@@ -27,7 +27,7 @@ SECRET_KEY = 'hta_e)2@0p9_^nmsi-w@a1v6axnlh0*a(m82nqn(brmuczqk_k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'dentalclinic_4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,26 +77,26 @@ WSGI_APPLICATION = 'dentalclinic_4.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    # #    'ENGINE': 'django.db.backends.sqlite3',
-    # #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #     # 'ENGINE'   : 'django.db.backends.mysql',
-    #     'ENGINE'   : 'django.db.backends.postgresql',
-    #     'NAME'     : 'dentalclinic', # name of the database
-    #     'USER'     : 'admin', # username of the database 
-    #     'PASSWORD' : 'admin', #password of your postgresql app
-    #     'HOST'     : 'localhost', # name of the host
-    #     'PORT'     : '5432',
-    # }
     'default': {
-        'ENGINE'   : 'django.db.backends.postgresql',
-        'URL'      :  os.getenv('DATABASE_URL'),
-        'NAME'     : os.getenv('PGDATABASE'), # name of the database
-        'USER'     : os.getenv('PGUSER'), # username of the database 
-        'PASSWORD' : os.getenv('PGPASSWORD'), #password of your postgresql app
-        'HOST'     : os.getenv('PGHOST'), # name of the host
-        'PORT'     : os.getenv('PGPORT'),
+        #    'ENGINE': 'django.db.backends.sqlite3',
+        #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE'   : 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dentalclinic',  # name of the database
+        'USER': 'admin',  # username of the database
+        'PASSWORD': 'admin',  # password of your postgresql app
+        'HOST': 'localhost',  # name of the host
+        'PORT': '5432',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'URL':  'DATABASE_URL',
+    #     'NAME': 'PGDATABASE',  # name of the database
+    #     'USER': 'PGUSER',  # username of the database
+    #     'PASSWORD': 'PGPASSWORD',  # password of your postgresql app
+    #     'HOST': 'PGHOST',  # name of the host
+    #     'PORT': 'PGPORT',
+    # }
 }
 
 # DATABASES['default'] = dj_database_url.config()
@@ -137,7 +137,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / "staticfiles_build" / "static"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
